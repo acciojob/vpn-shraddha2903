@@ -29,11 +29,11 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         List<ServiceProvider> serviceProviderList = user.getServiceProviderList();
 
-        if(user.isConnected())
+        if(user.getConnected())
         {
             throw new UserAlreadyConnected("Already connected");
         }
-        else if(user.getCountry().equals(countryName))
+        else if(user.getOriginalCountry().equals(countryName))
         {
             return  user;
         }
@@ -78,7 +78,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
                 user.setConnected(true);
 
-                user.setCountry(updatedCountry);
+                user.setOriginalCountry(updatedCountry);
 
 //              userRepository2.save(user);
 
@@ -104,7 +104,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         User user = userRepository2.findById(userId).get();
 
-        if(user.isConnected())
+        if(user.getConnected())
             throw new AlreadyDisconnected("Already disconnected");
 
         user.setMaskedIp(null);

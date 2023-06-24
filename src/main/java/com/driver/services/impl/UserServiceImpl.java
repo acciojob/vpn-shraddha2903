@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         country.setCountryName(CountryName.valueOf(countryName));
         country.setCode(CountryName.valueOf(countryName).toCode());
 
-        user.setCountry(country);
+        user.setOriginalCountry(country);
 
         user.setConnected(false);
         user.setMaskedIp(null);
@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
 
         List<ServiceProvider> serviceProviderList = user.getServiceProviderList();
 
-        List<User> userList = serviceProvider.getUserList();
+        List<User> userList = serviceProvider.getUsers();
         userList.add(user);
 
         serviceProviderList.add(serviceProvider);

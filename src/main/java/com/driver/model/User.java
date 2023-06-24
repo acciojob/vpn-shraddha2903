@@ -22,7 +22,7 @@ public class User
 
     private boolean connected;
 
-    @ManyToMany(mappedBy = "userList",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<ServiceProvider> serviceProviderList = new ArrayList<>();
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)

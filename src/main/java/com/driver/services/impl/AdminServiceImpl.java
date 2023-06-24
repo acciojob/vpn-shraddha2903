@@ -1,6 +1,5 @@
 package com.driver.services.impl;
 
-import com.driver.Exceptions.AdminNotFound;
 import com.driver.Exceptions.CountryNotFound;
 import com.driver.model.Admin;
 import com.driver.model.Country;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -32,7 +30,7 @@ public class AdminServiceImpl implements AdminService {
 
         Admin admin = new Admin();
         admin.setPassword(password);
-        admin.setUserName(username);
+        admin.setUsername(username);
 
         adminRepository1.save(admin);
         return admin;

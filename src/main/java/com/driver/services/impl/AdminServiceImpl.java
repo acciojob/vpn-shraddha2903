@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -57,6 +58,7 @@ public class AdminServiceImpl implements AdminService {
     public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception {
 
         //ind, aus, usa, chi, jpn
+        countryName = countryName.toLowerCase();
         if (countryName.equals("ind") || countryName.equals("aus") ||
                 countryName.equals("usa") || countryName.equals("chi")||
             countryName.equals("jpn"))
@@ -71,6 +73,8 @@ public class AdminServiceImpl implements AdminService {
         List<Country> countryList = serviceProvider.getCountryList();
 
         countryList.add(country);
+
+        serviceProvider.setCountryList(countryList);
 
         serviceProviderRepository1.save(serviceProvider);
         return serviceProvider;

@@ -33,11 +33,11 @@ public class ConnectionServiceImpl implements ConnectionService {
         {
             throw new UserAlreadyConnected("Already connected");
         }
-        else if(user.getOriginalCountry().equals(countryName))
+        if(user.getOriginalCountry().equals(countryName))
         {
             return  user;
         }
-        else{
+
             if(serviceProviderList.isEmpty())
             {
                 throw new UnableToConnect("Unable to connect");
@@ -70,9 +70,8 @@ public class ConnectionServiceImpl implements ConnectionService {
             {
                 throw new UnableToConnect("Unable to connect");
             }
-            else {
 
-                String maskedIp = updatedCountry.getCountryName()+"."+updatedServiceProvider.getId()+"."+userId;
+                String maskedIp = updatedCountry.getCode()+"."+updatedServiceProvider.getId()+"."+userId;
 
                 user.setMaskedIp(maskedIp);
 
@@ -86,16 +85,19 @@ public class ConnectionServiceImpl implements ConnectionService {
                 connection.setUser(user);
                 connection.setServiceProvider(updatedServiceProvider);
 
-                updatedServiceProvider.getConnectionList().add(connection);
-                user.getConnectionList().add(connection);
+                List<Connection> providerConnectionList = updatedServiceProvider.getConnectionList();
+                providerConnectionList.add(connection);
+                updatedServiceProvider.setConnectionList(providerConnectionList);
+
+
+                List<Connection> userConnectionList = user.getConnectionList();
+                userConnectionList.add(connection);
+                user.setConnectionList(userConnectionList);
 
                 user = userRepository2.save(user);
 
                 serviceProviderRepository2.save(updatedServiceProvider);
 
-            }
-
-        }
 
         return user;
     }

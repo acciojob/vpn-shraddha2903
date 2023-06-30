@@ -31,7 +31,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         List<ServiceProvider> serviceProviderList = user.getServiceProviderList();
 
-        if(user.getConnected())
+        if(user.getConnected()==true)
         {
             throw new UserAlreadyConnected("Already connected");
         }
@@ -108,16 +108,18 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         User user = userRepository2.findById(userId).get();
 
-        if(!user.getConnected())
-            throw new AlreadyDisconnected("Already disconnected");
-
+        if(user.getConnected()==null || user.getConnected()==true)
+        {
         user.setMaskedIp(null);
 
         user.setConnected(false);
 
-        user = userRepository2.save(user);
+        userRepository2.save(user);
 
         return user;
+        }
+
+        throw new AlreadyDisconnected("Already disconnected");
     }
     @Override
     public User communicate(int senderId, int receiverId) throws Exception {

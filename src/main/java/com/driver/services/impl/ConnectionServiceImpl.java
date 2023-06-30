@@ -27,6 +27,8 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         User user = userRepository2.findById(userId).get();
 
+        countryName = countryName.toUpperCase();
+
         List<ServiceProvider> serviceProviderList = user.getServiceProviderList();
 
         if(user.getConnected())

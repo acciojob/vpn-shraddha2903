@@ -31,6 +31,8 @@ public class UserServiceImpl implements UserService {
         user.setPassword(password);
 
         Country country = new Country();
+        countryName = countryName.toUpperCase();
+
         country.setCountryName(CountryName.valueOf(countryName));
         country.setCode(CountryName.valueOf(countryName).toCode());
 

@@ -43,7 +43,7 @@ public class ConnectionServiceImpl implements ConnectionService {
                 throw new UnableToConnect("Unable to connect");
             }
 
-            boolean isProvide = false;
+            Boolean isProvide = false;
             ServiceProvider updatedServiceProvider=null;
             int minId = Integer.MAX_VALUE;
             Country updatedCountry = null;

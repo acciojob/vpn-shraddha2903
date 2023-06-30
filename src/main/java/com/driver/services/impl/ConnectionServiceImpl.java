@@ -42,7 +42,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
             if(serviceProviderList.isEmpty())
             {
-                throw new UnableToConnect("UnableToConnect");
+                throw new UnableToConnect("Unable to connect");
             }
 
             Boolean isProvide = false;
@@ -70,8 +70,9 @@ public class ConnectionServiceImpl implements ConnectionService {
 
             if(!isProvide)
             {
-                throw new UnableToConnect("UnableToConnect");
+                throw new UnableToConnect("Unable to connect");
             }
+
 
                 String maskedIp = updatedCountry.getCode()+"."+updatedServiceProvider.getId()+"."+userId;
 

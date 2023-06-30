@@ -58,10 +58,10 @@ public class AdminServiceImpl implements AdminService {
     public ServiceProvider addCountry(int serviceProviderId, String countryName) throws Exception {
 
         //ind, aus, usa, chi, jpn
-        countryName = countryName.toLowerCase();
-        if (countryName.equals("ind") || countryName.equals("aus") ||
-                countryName.equals("usa") || countryName.equals("chi")||
-            countryName.equals("jpn"))
+        countryName = countryName.toUpperCase();
+        if (countryName.equals("IND") || countryName.equals("AUS") ||
+                countryName.equals("USA") || countryName.equals("CHI")||
+            countryName.equals("JPN"))
         {
         Country country = new Country();
 

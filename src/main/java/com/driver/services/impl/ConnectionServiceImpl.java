@@ -45,7 +45,7 @@ public class ConnectionServiceImpl implements ConnectionService {
                 throw new UnableToConnect("Unable to connect");
             }
 
-            Boolean isProvide = false;
+            Boolean isProvide = null;
             ServiceProvider updatedServiceProvider=null;
             int minId = Integer.MAX_VALUE;
             Country updatedCountry = null;
@@ -68,7 +68,7 @@ public class ConnectionServiceImpl implements ConnectionService {
                 }
             }
 
-            if(!isProvide)
+            if(isProvide==null)
             {
                 throw new UnableToConnect("Unable to connect");
             }

@@ -42,7 +42,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
             if(serviceProviderList.isEmpty())
             {
-                throw new UnableToConnect("Unable to connect");
+                throw new UnableToConnect("Unable to connect ,service provider list is empty");
             }
 
             Boolean isProvide = false;
